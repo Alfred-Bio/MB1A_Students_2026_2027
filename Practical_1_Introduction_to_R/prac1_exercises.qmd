@@ -1,0 +1,6 @@
+---
+title: "Practical_1_Introduction_to_R/prac1_exercises"
+author: "Alfred Jeffreys"
+---
+
+
