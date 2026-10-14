@@ -1,0 +1,11 @@
+---
+title: "HPA task"
+author: "Alfred Jeffreys"
+---
+I am going to calculate the number of genes with regionally elevated expression in the forebrain using the HPA data. 
+
+cerebral cortex, basal ganglia, thalamus and hypothalamus
+```{r}
+sum(180, 83, 57, 110)
+```
+The total number for humans is 430
