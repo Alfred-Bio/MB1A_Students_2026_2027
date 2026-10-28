@@ -1,0 +1,5 @@
+---
+title: "Practical_2_Data_Frames_and_Plots/worked_example"
+author: "Alfred Jeffreys"
+editor: visual
+---

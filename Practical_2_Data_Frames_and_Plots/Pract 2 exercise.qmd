@@ -1,0 +1,5 @@
+---
+title: "Practical_2_Data_Frames_and_Plots/prac2_exercises"
+author: "Alfred Jeffreys"
+editor: visual
+---
