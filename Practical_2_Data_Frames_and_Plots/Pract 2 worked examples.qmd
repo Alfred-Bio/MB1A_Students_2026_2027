@@ -3,3 +3,118 @@ title: "Practical_2_Data_Frames_and_Plots/worked_example"
 author: "Alfred Jeffreys"
 editor: visual
 ---
+
+breeding \<- read_csv("data/breeding_site_locations.csv")
+
+```{r}
+library(gt)
+library(tidyverse)
+library(maps)
+breeding <- read_csv("data/breeding_site_locations.csv")
+gt(breeding)
+colnames(breeding)
+```
+
+```{r}
+library(gt)
+library(tidyverse)
+library(maps)
+bird_breeding_sites <- read_csv("data/breeding_site_locations.csv")
+glimpse(bird_breeding_sites)
+```
+
+Exercise - Read the second CSV file
+
+```{r}
+library(gt)
+library(tidyverse)
+library(maps)
+migration <- read_csv("data/migratory_connectivity_dataset.csv")
+gt(head(migration))
+glimpse(migration)
+```
+
+The pipe symbol
+
+```{r}
+my_numbers <- c(2, 4, 6, 8)
+
+sum(my_numbers)
+my_numbers <- c(2, 4, 6, 8)
+
+print(my_numbers |>
+        sum() |>
+        sqrt())
+
+```
+Renaming variables 
+```{r}
+library(gt)
+library(tidyverse)
+library(maps)
+migration <- read_csv("data/migratory_connectivity_dataset.csv")
+migration_selected <- migration|>
+  select(winterLongitude, winterLatitude, pslon, pslat, iblon, iblat, awestlon, awestlat)|>
+  distinct()|>
+  rename(
+    Winter_Longitude = winterLongitude,
+    Winter_Latitude = winterLatitude,
+    Stopover_Longitude = pslon,
+    Stopover_Latitude = pslat,
+    Iberian_Longitude = iblon,
+    Iberian_Latitude = iblat,
+    Westmost_Longitude = awestlon,
+    Westmost_Latitude = awestlat
+  )
+  
+gt(migration_selected)
+     
+```
+Excluding spain
+```{r}
+library(gt)
+library(tidyverse)
+library(maps)
+migration <- read_csv("data/migratory_connectivity_dataset.csv")
+bird_breeding_sites <- read_csv("data/breeding_site_locations.csv")
+bird_breeding_exc <- bird_breeding_sites |>
+  filter(Site != "Spain")
+bird_migration_exc <- migration |>
+  filter(Site != "Spain")
+gt(bird_breeding_exc)
+
+```
+Grouping and sumerising 
+```{r}
+library(gt)
+library(tidyverse)
+library(maps)
+
+
+migration <- read_csv("data/migratory_connectivity_dataset.csv")
+migration <- read_csv("data/migratory_connectivity_dataset.csv")
+
+bird_breeding_sites <- read_csv("data/breeding_site_locations.csv")
+bird_breeding_exc <- bird_breeding_sites |>
+  filter(Site != "Spain")
+bird_migration_exc <- migration |>
+  filter(Site != "Spain")
+bird_migration_grouped <- bird_migration_exc |> group_by(Site)
+
+lat_df <- bird_migration_grouped |>
+  summarise(Highest_Lat_Stopover = max(pslon, na.rm = TRUE))
+
+gt(lat_df)
+```
+
+```{r}
+df_dept <- read_csv("data/depts.csv")
+df_score <- read_csv("data/scores.csv")
+gt(df_score)
+gt(df_dept)
+full_join_example <- full_join(df_dept, df_score)
+gt(full_join_example)
+inner_join_example <- inner_join(df_dept, df_score)
+gt(inner_join_example)
+```
+
