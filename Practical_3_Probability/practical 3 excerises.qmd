@@ -5,3 +5,69 @@ editor: visual
 ---
 
 ## 
+
+```{r}
+#cube of numbers
+set.seed(42)
+for (i in seq_len(10)) {
+  k<-i^3
+  print(k)
+}
+```
+
+```{r}
+for (i in seq_len(5)) {
+  print(paste(sample(letters, 5, replace = TRUE), collapse = ""))
+}
+
+```
+
+```{r}
+library(cowsay)
+species <- c("frog", "stegosaurus", "squirrel", "ghost")
+
+for (spp in species) {
+  say(paste("HELP THE", spp,"ARE AFTER ME!!!"), by = spp,)
+}
+```
+
+```{r}
+library(tidyverse)
+library(gt)
+set.seed(42)
+
+species <- c("monkey", "shark", "turkey", "snowman")
+species_df <- tibble()
+
+for (spp in species) {
+  has_s <- startsWith(spp, "s")
+  current_row <- tibble(
+    Species = spp,
+    Starts_with_S = has_s
+  )
+  species_df <- species_df |> bind_rows(current_row)
+}
+gt(species_df)
+```
+
+```{r}
+breakfast <- c("eggs", "bacon", "sausages", "toast")
+break_df <- tibble()
+number<- seq_len(5)
+for (i in seq_len(10)) {
+  dailyitem<-sample(breakfast, size = 1)
+  dailynumber <- sample(number, size = 1)
+  row <- tibble(
+    item = dailyitem,number=dailynumber)
+  break_df <- bind_rows(break_df, row)
+}
+  
+
+
+
+
+
+gt(break_df)
+
+
+```
